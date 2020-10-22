@@ -70,3 +70,4 @@
 2019-07: 600
 ```
 
+[SQL 작성 완료](monthly-report.sql)
