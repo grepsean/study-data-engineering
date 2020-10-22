@@ -1,8 +1,8 @@
-## 가상의 데이터 인프라 구축해보지 (No Coding)
+## 1. 가상의 데이터 인프라 구축해보지 (No Coding)
 - raw_data : 어떤 데이터들이 복사될 수 있을지?
 - analytics: 어떤 써머리 테이블들을 만들 수 있을지?
 
-### _스타벅스의 데이터 인프라를 구축해보자._
+#### _스타벅스의 데이터 인프라를 구축해보자._
 - raw_data
   - 고객의 결제 데이터
     - 결제 시간
@@ -56,4 +56,17 @@
   - 혼잡한 시간에는 음료의 서빙 속도가 얼마나 되는지
   - 일별 굿즈 한정판매 / 음료판매
 
+
+## 2. SQL이나  Python으로 Monthly Active User 세보기
+|raw_data.user_session_channel|raw_data.session_timestamp|
+|---|---|
+|CREATE TABLE raw_data.user_session_channel (<br />userid integer ,<br /> sessionid varchar(32),<br />channel varchar(32),<br />Primary key (userid, sessionid)<br />);|CREATE TABLE raw_data.session_timestamp (<br />sessionid varchar(32) primary key,<br />ts timestamp<br />);|
+- 앞서 주어진 두개의 테이블 (session_timestamp, user_session_channel)을 바탕으로 월별마다 액티브한 사용자들의 수를 카운트한다
+- 여기서 중요한 점은 세션의 수를 세는 것이 아니라 사용자의 수를 카운트한다는 점이다.
+- 결과는 예를 들면 아래와 같은 식이 되어야 한다:
+```
+2019-05: 400
+2019-06: 500
+2019-07: 600
+```
 
