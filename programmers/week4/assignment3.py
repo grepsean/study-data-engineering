@@ -54,7 +54,7 @@ def load(target_table, *lines, **kwargs):
     # Start transaction
     execute_with_log(cur, f'BEGIN')
     # Truncate table before Insert
-    execute_with_log(cur, f'TRUNCATE TABLE {target_table}')
+    execute_with_log(cur, f'DELETE FROM {target_table}')
 
     for record in lines[1:]:  # except header
         if record and record.strip():
